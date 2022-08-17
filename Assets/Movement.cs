@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-  Rigidbody rbody;
-  [SerializeField] float Thrust=0f;
-  [SerializeField] float RotationThrust=0f;
+    Rigidbody rbody;
+    [SerializeField] float Thrust = 0.0f;
+    [SerializeField] float RotationThrust = 0.0f;
     void Start()
     {
-      
-        rbody= GetComponent<Rigidbody>();
+
+        rbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,50 +19,29 @@ public class Movement : MonoBehaviour
         Thrusting();
     }
 
-    void Thrusting(){
-        
-            if(Input.GetKey(KeyCode.Space))
-            {
-              rbody.AddRelativeForce(Vector3.up*Thrust*Time.deltaTime);
-            }
-          
-             
-            
-        
+    void Thrusting()
+    {
 
-          {
-                  Rotating();
-          }   
-                 void Rotating(){
-                  rbody.freezeRotation=true;
-                  rbody.freezeRotation=false;
-                 {}
-        if(Input.GetKey(KeyCode.A)){
-        transform.Rotate(Vector3.back*RotationThrust*Time.deltaTime);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rbody.AddRelativeForce(Vector3.up * Thrust * Time.deltaTime);
         }
-       
-        else if(Input.GetKey(KeyCode.D)){
-         transform.Rotate(Vector3.forward*RotationThrust*Time.deltaTime);
-       }
-    
+        Rotating();
+    }
+    void Rotating()
+    {
+        rbody.freezeRotation = true;
+        rbody.freezeRotation = false;
+        { }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.back * RotationThrust * Time.deltaTime);
+        }
 
-
-       
-    
-
-        
-     
-
-            }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        } 
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.forward * RotationThrust * Time.deltaTime);
+        }
+    }
 }
 
